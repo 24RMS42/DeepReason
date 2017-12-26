@@ -34,5 +34,7 @@ target 'DeepReason' do
   pod 'SwiftyGif'
   pod 'KIImagePager'
   pod 'JTSImageViewController', '~> 1.5'
+  pod 'EasyTipView', '~> 1.0.2'
+
 # Pods for DeepReason
 end

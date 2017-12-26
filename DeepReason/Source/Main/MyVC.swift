@@ -22,6 +22,9 @@ class MyVC: JSQMessagesViewController {
     @IBOutlet weak var btnProfile: UIBarButtonItem!
     @IBOutlet weak var btnFeed: UIBarButtonItem!
     @IBOutlet weak var btnChat: UIBarButtonItem!
+    @IBOutlet weak var btnMsgRefer: UIButton!
+    @IBOutlet weak var btnSettingRefer: UIButton!
+    @IBOutlet weak var btnFeedRefer: UIButton!
 
     var childVC : TabRootVC?
     var currentIndex = 0

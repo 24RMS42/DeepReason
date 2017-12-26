@@ -16,8 +16,9 @@ import SDWebImage
 import QHSpeechSynthesizerQueue
 import SCLAlertView
 import JTSImageViewController
+import EasyTipView
 
-class ServerChatVC: MyVC , UINavigationControllerDelegate {
+class ServerChatVC: MyVC , UINavigationControllerDelegate, EasyTipViewDelegate {
     public var itemFrame: CGRect?
     var webView : UIWebView? = nil
     let defaults = UserDefaults.standard
@@ -27,6 +28,9 @@ class ServerChatVC: MyVC , UINavigationControllerDelegate {
     fileprivate var displayName: String!
     var channel : TCHChannel!
     let synthesizerQueue = QHSpeechSynthesizerQueue()
+    var settingTipView : EasyTipView? = nil
+    var feedTipView : EasyTipView? = nil
+    var msgTipView : EasyTipView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +75,60 @@ class ServerChatVC: MyVC , UINavigationControllerDelegate {
         MessagingManager._sharedManager.initializeClientWithToken(token: accessToken!)
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData())
         
+        if ((defaults.value(forKey: "newUser")) == nil) {
+            defaults.setValue(false, forKey: "newUser")
+            showTip()
+        }
+    }
+    
+    func showTip() {
+        var preferences = EasyTipView.Preferences()
+        
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(red: 91/255, green: 155/255, blue: 213/255, alpha: 1.0)
+        preferences.drawing.foregroundColor = UIColor.white
+        preferences.drawing.arrowHeight = CGFloat(15)
+        preferences.drawing.borderColor = UIColor.gray
+        preferences.drawing.borderWidth = CGFloat(1)
+        
+        preferences.positioning.bubbleVInset = CGFloat(8)
+        
+        preferences.animating.showDuration = 1.5
+        preferences.animating.dismissDuration = 1
+        
+        EasyTipView.globalPreferences = preferences
+        
+        var settingPreference = EasyTipView.globalPreferences
+        settingPreference.animating.dismissTransform = CGAffineTransform(translationX: -100, y: 0)
+        settingPreference.animating.showInitialTransform = CGAffineTransform(translationX: -100, y: 0)
+        settingTipView = EasyTipView(text: "Settings", preferences: settingPreference)
+        settingTipView?.show(animated: true, forView: self.btnSettingRefer)
+        
+        var feedPreference = EasyTipView.globalPreferences
+        feedPreference.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0)
+        feedPreference.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0)
+        feedTipView = EasyTipView(text: "Feed", preferences: feedPreference)
+        feedTipView?.show(animated: true, forView: self.btnFeedRefer)
+        
+        var msgPreference = EasyTipView.globalPreferences
+        msgPreference.animating.dismissTransform = CGAffineTransform(translationX: -100, y: 0)
+        msgPreference.animating.showInitialTransform = CGAffineTransform(translationX: -100, y: 0)
+        msgPreference.drawing.arrowPosition = .bottom
+        msgTipView = EasyTipView(text: "Type a message here", preferences: msgPreference)
+        msgTipView?.show(animated: true, forView: self.btnMsgRefer)
+        
+        _ = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(self.dismissTip), userInfo: nil, repeats: false)
+    }
+    
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        print("\(tipView) did dismiss!")
+    }
+    
+    @objc func dismissTip() {
+        settingTipView?.dismiss()
+        feedTipView?.dismiss()
+        msgTipView?.dismiss()
     }
 
     func loadChannel(channel channel_name : String) {
