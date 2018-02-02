@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import HockeySDK
+//import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BITHockeyManager.shared().authenticator.authenticateInstallation()
 
         self.configureUserNotifications()
-
+        //Requesting Authorization for User Interactions
+        /*let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }*/
         return true
     }
 

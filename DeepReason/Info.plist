@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.9</string>
+	<string>1.5</string>
 	<key>CFBundleVersion</key>
-	<string>49</string>
+	<string>51</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -40,17 +40,17 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>User for send image in chat</string>
+	<string>This app requires to use camera</string>
 	<key>NSContactsUsageDescription</key>
 	<string>This app requires contact from phone book.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>User for track user location</string>
+	<string>This app requires user's location tracking</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>User for track user location</string>
+	<string>This app requires user's location tracking</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Use for call</string>
+	<string>This app requires to use microphone for call</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Always Use</string>
+	<string>This app requires to use photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.ttf</string>

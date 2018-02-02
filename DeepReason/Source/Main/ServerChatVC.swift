@@ -17,6 +17,8 @@ import QHSpeechSynthesizerQueue
 import SCLAlertView
 import JTSImageViewController
 import EasyTipView
+import UserNotifications
+import UserNotificationsUI
 
 class ServerChatVC: MyVC , UINavigationControllerDelegate, EasyTipViewDelegate {
     public var itemFrame: CGRect?
@@ -31,6 +33,7 @@ class ServerChatVC: MyVC , UINavigationControllerDelegate, EasyTipViewDelegate {
     var settingTipView : EasyTipView? = nil
     var feedTipView : EasyTipView? = nil
     var msgTipView : EasyTipView? = nil
+    let requestIdentifier = "SampleRequest" //identifier is to cancel the notification request
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -560,6 +563,10 @@ extension ServerChatVC {
         case "show-feed":
             UserDefaults.standard.set(json["fid"].string!, forKey: UserProfile.fid)
             break
+//        case "phone-notification":
+//            text = json["msg"].string!
+//            showLocalNotification(text: text)
+//            break
         default:
             break
         }
@@ -592,6 +599,10 @@ extension ServerChatVC {
                 self.inputToolbar.isHidden = true
             }
             break
+        case "phone-notification":
+            let text = json["msg"].string
+            showLocalNotification(text: text!)
+            break
         default:
             break
         }
@@ -616,6 +627,25 @@ extension ServerChatVC {
                     let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: .image, backgroundStyle: .scaled)
                     imageViewer?.show(from: self, transition: .fromOriginalPosition)
                 }
+            }
+        }
+    }
+    
+    func showLocalNotification(text: String) {
+        let content = UNMutableNotificationContent()
+        content.title = " "
+        content.subtitle = " "
+        content.body = text
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 1.0, repeats: false)
+        let request = UNNotificationRequest(identifier:requestIdentifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request){(error) in
+            
+            if (error != nil){
+                //print(error?.localizedDescription)
             }
         }
     }
@@ -668,6 +698,27 @@ extension ServerChatVC : TCHChannelDelegate {
 extension ServerChatVC : MessagingDelegate {
     func finishInitialize() {
         self.loadChannel(channel: "server_\(defaults.string(forKey: UserProfile.id)!)")
+    }
+}
+
+extension ServerChatVC : UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("Notification being triggered")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier{
+            
+            completionHandler( [.alert,.sound,.badge])
+            
+        }
     }
 }
 
