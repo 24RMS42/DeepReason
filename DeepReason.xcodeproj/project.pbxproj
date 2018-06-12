@@ -725,8 +725,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DeepReason;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "43547f3a-f0e2-456d-92c1-8174c451c7b7";
-				PROVISIONING_PROFILE_SPECIFIER = DeepReason_Develop;
+				PROVISIONING_PROFILE = "c73942e4-8e01-4348-bdd9-e3c7690c8762";
+				PROVISIONING_PROFILE_SPECIFIER = DeepReason_New_Dev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;

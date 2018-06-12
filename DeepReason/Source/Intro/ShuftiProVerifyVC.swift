@@ -31,6 +31,12 @@ class ShuftiProVerifyVC: UIViewController {
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
+        
+        //make background of navigation bar transparent
+        let navigationBar = self.navigationController!.navigationBar
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +78,12 @@ class ShuftiProVerifyVC: UIViewController {
         return 0
     }
     
+    func goToLogin() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Intro", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "master")
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
     @IBAction func OnDobFieldTapped(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         
@@ -105,11 +117,16 @@ class ShuftiProVerifyVC: UIViewController {
             let reponse = result as! NSDictionary
             if reponse.value(forKey: "status_code") as! String == "SP1" {
                 print("Verified")
+                self.goToLogin()
             }else{
                 //print(reponse.value(forKey: "message") as! String)
                 print(result)
             }
         }
+    }
+    
+    @IBAction func OnCancelClicked(_ sender: Any) {
+        self.goToLogin()
     }
     
     /*
