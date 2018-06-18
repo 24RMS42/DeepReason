@@ -35,6 +35,7 @@ target 'DeepReason' do
   pod 'KIImagePager'
   pod 'JTSImageViewController', '~> 1.5'
   pod 'EasyTipView', '~> 1.0.2'
+  pod 'CountryPickerView', '~> 1.0.0'
 
 # Pods for DeepReason
 end

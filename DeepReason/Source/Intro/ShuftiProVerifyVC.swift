@@ -8,6 +8,7 @@
 
 import UIKit
 import ShuftiPro
+import CountryPickerView
 
 class ShuftiProVerifyVC: UIViewController {
 
@@ -21,6 +22,7 @@ class ShuftiProVerifyVC: UIViewController {
     let secretKeyString: String = "VIFKcpxTRrxytg94kFJ8tsUbzRdaDFsz" //your Secret key here
     var selectedMethod: String = ""
     var dobDate: Date? = nil
+    var cpv = CountryPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,13 @@ class ShuftiProVerifyVC: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        
+        //ISO country code
+        cpv = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 300, height: 20))
+        countryCodeField.leftView = cpv
+        countryCodeField.leftViewMode = .always
+        cpv.showPhoneCodeInView = false
+        cpv.showCountryCodeInView = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,8 +119,9 @@ class ShuftiProVerifyVC: UIViewController {
     
     @IBAction func OnProceedClicked(_ sender: Any) {
         selectedMethod = "id_card"
+        let isoCountryCodeName = cpv.selectedCountry.code
         let varify = Shuftipro(clientId: clientIdString, secretKey: secretKeyString, parentVC: self)
-        varify.documentVerification(method: selectedMethod, firstName: fnameField.text!, lastName: lnameField.text!, dob: dobField.text!, country: countryCodeField.text!, phoneNumber: phoneField.text!){
+        varify.documentVerification(method: selectedMethod, firstName: fnameField.text!, lastName: lnameField.text!, dob: dobField.text!, country: isoCountryCodeName, phoneNumber: phoneField.text!){
             (result: Any) in
             
             let reponse = result as! NSDictionary
