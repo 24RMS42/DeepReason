@@ -57,6 +57,8 @@ class MasterIntroVC: BWWalkthroughViewController, BWWalkthroughViewControllerDel
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
+        
+        self.navigationItem.hidesBackButton = true;
 
         scrollview.bounces = false;
         self.automaticallyAdjustsScrollViewInsets = false;

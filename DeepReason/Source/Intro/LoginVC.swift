@@ -24,11 +24,17 @@ class LoginVC: UIViewController {
         itemDone.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 0, green: 0.8, blue: 0.8, alpha: 1.00)], for: .normal)
         // Do any additional setup after loading the view.
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     /*
