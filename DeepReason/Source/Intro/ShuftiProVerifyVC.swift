@@ -9,9 +9,11 @@
 import UIKit
 import ShuftiPro
 import CountryPickerView
+import SCLAlertView
 
 class ShuftiProVerifyVC: UIViewController {
 
+    @IBOutlet weak var verifySelectionBtn: UIButton!
     @IBOutlet weak var fnameField: UITextField!
     @IBOutlet weak var lnameField: UITextField!
     @IBOutlet weak var dobField: UITextField!
@@ -20,7 +22,7 @@ class ShuftiProVerifyVC: UIViewController {
     
     let clientIdString: String = "ddfe0e8d462af661f81db36589c39882dc0f2330785b5d80cd34f2f520ad618f" //your Client ID here
     let secretKeyString: String = "VIFKcpxTRrxytg94kFJ8tsUbzRdaDFsz" //your Secret key here
-    var selectedMethod: String = ""
+    var selectedMethod: String = "id_card"
     var dobDate: Date? = nil
     var cpv = CountryPickerView()
     
@@ -46,6 +48,7 @@ class ShuftiProVerifyVC: UIViewController {
         countryCodeField.leftViewMode = .always
         cpv.showPhoneCodeInView = false
         cpv.showCountryCodeInView = false
+        cpv.setCountryByCode("US")
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +96,14 @@ class ShuftiProVerifyVC: UIViewController {
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
+    func isValid() -> Bool {
+        if ((fnameField.text?.isEmpty)! || (lnameField.text?.isEmpty)! || (dobField.text?.isEmpty)!) {
+            SCLAlertView().showWarning("Please fill out all fields", subTitle: "")
+            return false
+        }
+        return true
+    }
+    
     @IBAction func OnDobFieldTapped(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         
@@ -118,7 +129,9 @@ class ShuftiProVerifyVC: UIViewController {
     }
     
     @IBAction func OnProceedClicked(_ sender: Any) {
-        selectedMethod = "id_card"
+        if !isValid() {
+            return
+        }
         let isoCountryCodeName = cpv.selectedCountry.code
         let varify = Shuftipro(clientId: clientIdString, secretKey: secretKeyString, parentVC: self)
         varify.documentVerification(method: selectedMethod, firstName: fnameField.text!, lastName: lnameField.text!, dob: dobField.text!, country: isoCountryCodeName, phoneNumber: phoneField.text!){
@@ -139,14 +152,32 @@ class ShuftiProVerifyVC: UIViewController {
         self.goToLogin()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func OnVerifySelectionClicked(_ sender: Any) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        let idCardAction = UIAlertAction(title: "ID Card Verification", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.selectedMethod = "id_card"
+            self.verifySelectionBtn.setTitle("ID Card Verification", for: UIControlState.normal)
+        })
+        let drivingLicenseAction = UIAlertAction(title: "Driving Licence Verification", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.selectedMethod = "driving_license"
+            self.verifySelectionBtn.setTitle("Driving Licence Verification", for: UIControlState.normal)
+        })
+        let passportAction = UIAlertAction(title: "Passport Verification", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.selectedMethod = "passport"
+            self.verifySelectionBtn.setTitle("Passport Verification", for: UIControlState.normal)
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(idCardAction)
+        optionMenu.addAction(drivingLicenseAction)
+        optionMenu.addAction(passportAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
     }
-    */
-
 }

@@ -723,8 +723,27 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgL-CY-H3n">
+                                <rect key="frame" x="52" y="40" width="271" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mI1-lq-Loz"/>
+                                </constraints>
+                                <state key="normal" title="ID Card Verification">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="OnVerifySelectionClicked:" destination="yYg-Tb-AA5" eventType="touchUpInside" id="EcL-Pn-Yv1"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="es2-Bs-vpK">
+                                <rect key="frame" x="301" y="49" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="lm6-WL-5Ks"/>
+                                    <constraint firstAttribute="width" constant="22" id="q3S-V1-OKg"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcE-nM-u91" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="52" y="35" width="271" height="40"/>
+                                <rect key="frame" x="52" y="75" width="271" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IvD-TJ-p0j"/>
                                 </constraints>
@@ -762,7 +781,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-Vt-XsV" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="52" y="85" width="271" height="40"/>
+                                <rect key="frame" x="52" y="125" width="271" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KXx-v9-qD2"/>
                                 </constraints>
@@ -800,7 +819,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DOB" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5HJ-46-sQi" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="52" y="135" width="271" height="40"/>
+                                <rect key="frame" x="52" y="175" width="271" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0iB-6s-elf"/>
                                 </constraints>
@@ -841,7 +860,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r78-cL-6Nn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="52" y="185" width="271" height="40"/>
+                                <rect key="frame" x="52" y="225" width="271" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7tM-0N-yhQ"/>
                                 </constraints>
@@ -879,7 +898,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number (+100000000)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atK-D5-5jT" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="52" y="235" width="271" height="40"/>
+                                <rect key="frame" x="52" y="275" width="271" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TQc-0v-aHA"/>
                                 </constraints>
@@ -918,7 +937,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lao-U2-wuS">
                                 <rect key="frame" x="53" y="550" width="270" height="41"/>
-                                <color key="backgroundColor" red="1" green="0.13746896881538251" blue="0.20687810925422756" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="DGX-Jz-tGL"/>
                                 </constraints>
@@ -931,7 +950,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvs-Ac-oNR">
                                 <rect key="frame" x="53" y="601" width="270" height="41"/>
-                                <color key="backgroundColor" red="1" green="0.13746896880000001" blue="0.2068781093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="HaY-fP-LMg"/>
                                 </constraints>
@@ -947,11 +966,14 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="r78-cL-6Nn" secondAttribute="trailing" constant="36" id="39a-26-g8Q"/>
                             <constraint firstItem="atK-D5-5jT" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="36" id="3EG-CX-k8j"/>
+                            <constraint firstItem="NgL-CY-H3n" firstAttribute="top" secondItem="Ihl-Cy-ezr" secondAttribute="bottom" constant="20" id="5Zx-TJ-Jva"/>
                             <constraint firstAttribute="trailing" secondItem="if2-Ow-IFB" secondAttribute="trailing" id="8hm-tQ-ENJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="es2-Bs-vpK" secondAttribute="trailing" constant="36" id="9TD-g7-QzZ"/>
                             <constraint firstItem="r78-cL-6Nn" firstAttribute="top" secondItem="5HJ-46-sQi" secondAttribute="bottom" constant="10" id="9e3-HY-pO9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5HJ-46-sQi" secondAttribute="trailing" constant="36" id="Cwy-5K-L4T"/>
                             <constraint firstItem="2GX-AC-Vky" firstAttribute="top" secondItem="if2-Ow-IFB" secondAttribute="bottom" id="E6K-cA-6MP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="atK-D5-5jT" secondAttribute="trailing" constant="36" id="GZK-by-HYj"/>
+                            <constraint firstItem="NgL-CY-H3n" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="36" id="LFW-rl-bcP"/>
                             <constraint firstItem="5HJ-46-sQi" firstAttribute="top" secondItem="sUd-Vt-XsV" secondAttribute="bottom" constant="10" id="Okg-DY-C8a"/>
                             <constraint firstItem="atK-D5-5jT" firstAttribute="top" secondItem="r78-cL-6Nn" secondAttribute="bottom" constant="10" id="Tfs-U7-FmF"/>
                             <constraint firstItem="48A-Bx-8Vw" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leading" id="Uhp-r2-uUQ"/>
@@ -961,12 +983,14 @@
                             <constraint firstItem="if2-Ow-IFB" firstAttribute="top" secondItem="8zT-Fi-Dny" secondAttribute="top" id="cbh-Ch-56M"/>
                             <constraint firstItem="WcE-nM-u91" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="36" id="clZ-5x-DbF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lao-U2-wuS" secondAttribute="trailing" constant="36" id="fln-Rd-5ua"/>
-                            <constraint firstItem="WcE-nM-u91" firstAttribute="top" secondItem="Ihl-Cy-ezr" secondAttribute="bottom" constant="15" id="hQg-9M-fAe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NgL-CY-H3n" secondAttribute="trailing" constant="36" id="foh-zl-2Vz"/>
                             <constraint firstItem="zvs-Ac-oNR" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="37" id="nqS-zW-AA8"/>
                             <constraint firstItem="48A-Bx-8Vw" firstAttribute="top" secondItem="8zT-Fi-Dny" secondAttribute="top" id="oAK-yd-cEA"/>
                             <constraint firstItem="if2-Ow-IFB" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leading" id="pD8-zV-o7X"/>
                             <constraint firstItem="r78-cL-6Nn" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="36" id="pRh-ct-C58"/>
+                            <constraint firstItem="WcE-nM-u91" firstAttribute="top" secondItem="Ihl-Cy-ezr" secondAttribute="bottom" constant="55" id="rEn-c9-92X"/>
                             <constraint firstItem="5HJ-46-sQi" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="36" id="rll-gA-zbM"/>
+                            <constraint firstItem="es2-Bs-vpK" firstAttribute="top" secondItem="Ihl-Cy-ezr" secondAttribute="bottom" constant="29" id="s60-8E-j3d"/>
                             <constraint firstItem="sUd-Vt-XsV" firstAttribute="top" secondItem="WcE-nM-u91" secondAttribute="bottom" constant="10" id="sQF-GE-RDM"/>
                             <constraint firstItem="lao-U2-wuS" firstAttribute="leading" secondItem="8zT-Fi-Dny" secondAttribute="leadingMargin" constant="37" id="ser-PK-SBf"/>
                             <constraint firstItem="zvs-Ac-oNR" firstAttribute="top" secondItem="lao-U2-wuS" secondAttribute="bottom" constant="10" id="t5h-Tz-j7e"/>
@@ -984,6 +1008,7 @@
                         <outlet property="fnameField" destination="WcE-nM-u91" id="X62-v5-LJK"/>
                         <outlet property="lnameField" destination="sUd-Vt-XsV" id="MJL-FJ-afg"/>
                         <outlet property="phoneField" destination="atK-D5-5jT" id="45p-2I-7qf"/>
+                        <outlet property="verifySelectionBtn" destination="NgL-CY-H3n" id="nUo-u0-Zhh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cR-p7-UG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1453,6 +1478,7 @@
         <image name="ad-8.gif" width="600" height="1067"/>
         <image name="ad-9.gif" width="600" height="1067"/>
         <image name="bg_splash_vero.jpg" width="1496" height="2664"/>
+        <image name="down_arrow" width="64" height="64"/>
         <image name="logo.jpg" width="2250" height="4000"/>
         <image name="logoIcon" width="91" height="18"/>
     </resources>
