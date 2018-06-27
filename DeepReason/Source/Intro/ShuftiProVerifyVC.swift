@@ -20,8 +20,8 @@ class ShuftiProVerifyVC: UIViewController {
     @IBOutlet weak var countryCodeField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
     
-    let clientIdString: String = "ddfe0e8d462af661f81db36589c39882dc0f2330785b5d80cd34f2f520ad618f" //your Client ID here
-    let secretKeyString: String = "VIFKcpxTRrxytg94kFJ8tsUbzRdaDFsz" //your Secret key here
+    let clientIdString: String = "a0f8b2c4cb1ac82abdb37f0fe5203b97be556c4468c83bba18684d620fd8eaf9" //your Client ID here
+    let secretKeyString: String = "c1N4YfTX4oyrV7Nj3I9wMNpnlJsW6Mtj" //your Secret key here
     var selectedMethod: String = "id_card"
     var dobDate: Date? = nil
     var cpv = CountryPickerView()
